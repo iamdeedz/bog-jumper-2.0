@@ -1,10 +1,10 @@
-from collisions import handle_collisions
+from events import handle_events
 
 
 class Player:
     def __init__(self):
-        self.x = 1
-        self.y = 1
+        self.x = 0
+        self.y = 0
         self.x_vel = 0
         self.y_vel = 0
 
@@ -12,4 +12,5 @@ class Player:
         screen.blit(imgs["player"], (self.x * block_size, self.y * block_size))
 
     def update(self, level):
-        handle_collisions(self, level)
+        gamestate = handle_events(self, level)
+        return gamestate
