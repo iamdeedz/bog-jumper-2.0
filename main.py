@@ -1,11 +1,12 @@
 from constants import *
 from visuals import draw_frame, load_level
 from player import Player
+from random import randint
 
 
 def main():
     p.init()
-    screen = p.display.set_mode((screen_width, screen_height))
+    screen = p.display.set_mode((screen_width, screen_height), p.RESIZABLE)
     clock = p.time.Clock()
     player = Player()
     level = load_level("test")
