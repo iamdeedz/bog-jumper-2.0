@@ -21,7 +21,7 @@ def check_collision(level, x, y):
 def check_flag_collision(level, x, y):
     if x < 0 or y < 0:
         return False
-    
+
     try:
         if level[floor(y)][floor(x)].is_win:
             return True
