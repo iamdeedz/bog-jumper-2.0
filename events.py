@@ -44,6 +44,9 @@ def check_flag_collision(level, x, y):
 def handle_events(player, level):
     next_gamestate = 1
 
+    # Gravity
+    player.y_vel += 0.01
+
     # Walls
     player.x += player.x_vel
     if check_collision(level, player.x, player.y):

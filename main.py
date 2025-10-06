@@ -49,10 +49,6 @@ def main():
                         player.x_vel = 0
                     if event.key == p.K_RIGHT:
                         player.x_vel = 0
-                    if event.key == p.K_UP:
-                        player.y_vel = 0
-                    if event.key == p.K_DOWN:
-                        player.y_vel = 0
 
                 if event.type == p.KEYDOWN:
                     if event.key == p.K_LEFT:
@@ -61,8 +57,6 @@ def main():
                         player.x_vel = 0.25
                     if event.key == p.K_UP:
                         player.y_vel = -0.25
-                    if event.key == p.K_DOWN:
-                        player.y_vel = 0.25
 
         if gamestate == gamestates[2]:
             # Game Over
