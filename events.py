@@ -45,7 +45,7 @@ def handle_events(player, level):
     next_gamestate = 1
 
     # Gravity
-    player.y_vel += 0.01
+    player.y_vel = min(player.y_vel+0.01, 0.25)
 
     # Walls
     player.x += player.x_vel
