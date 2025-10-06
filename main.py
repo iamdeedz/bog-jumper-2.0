@@ -1,9 +1,9 @@
-import PIL.Image
-
-from constants import *
+from constants import screen_height, screen_width, fps, gamestates, block_size, imgs
 from visuals import draw_frame, load_level
 from player import Player
+from events import check_collision
 from random import randint
+import pygame as p
 
 
 def main():
@@ -20,7 +20,6 @@ def main():
     while running:
         if gamestate == gamestates[0]:
             # Menu
-            gamestate = gamestates[1]
 
             for event in p.event.get():
                 if event.type == p.QUIT:
@@ -28,6 +27,12 @@ def main():
 
                 if event.type == p.KEYDOWN and event.key == p.K_ESCAPE:
                     running = False
+
+                if event.type == p.KEYDOWN:
+                    gamestate = gamestates[1]
+
+                if event.type == p.MOUSEBUTTONDOWN:
+                    gamestate = gamestates[1]
 
         if gamestate == gamestates[1]:
             # In Game
@@ -45,20 +50,14 @@ def main():
                         player.x_vel = 0
                     if event.key == p.K_RIGHT:
                         player.x_vel = 0
-                    if event.key == p.K_UP:
-                        player.y_vel = 0
-                    if event.key == p.K_DOWN:
-                        player.y_vel = 0
 
                 if event.type == p.KEYDOWN:
                     if event.key == p.K_LEFT:
                         player.x_vel = -0.25
                     if event.key == p.K_RIGHT:
                         player.x_vel = 0.25
-                    if event.key == p.K_UP:
+                    if event.key == p.K_UP and check_collision(level, player.x, player.y+1):
                         player.y_vel = -0.25
-                    if event.key == p.K_DOWN:
-                        player.y_vel = 0.25
 
         if gamestate == gamestates[2]:
             # Game Over

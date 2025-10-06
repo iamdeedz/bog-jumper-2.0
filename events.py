@@ -2,6 +2,9 @@ from math import floor, ceil
 
 
 def check_collision(level, x, y):
+    if floor(x) < 0 or floor(y) < 0:
+        return True
+
     try:
         if level[floor(y)][floor(x)].is_solid:
             return True
@@ -40,6 +43,9 @@ def check_flag_collision(level, x, y):
 
 def handle_events(player, level):
     next_gamestate = 1
+
+    # Gravity
+    player.y_vel = min(player.y_vel+0.01, 0.25)
 
     # Walls
     player.x += player.x_vel
