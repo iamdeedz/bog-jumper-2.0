@@ -14,6 +14,14 @@ def draw_level(screen, block_size, level):
             tile.draw(screen, x, y, block_size)
 
 
+def draw_menu(screen, font):
+    screen.fill("grey 50")
+    name = font.render("Bog Jumper 2.0", True, "white")
+    start_text = font.render("Press Any Button to Start", True, "white")
+    screen.blit(name, (screen.get_width() // 2 - name.get_width() // 2, screen.get_height() // 2 - name.get_height() // 2))
+    screen.blit(start_text, (screen.get_width() // 2 - start_text.get_width() // 2, screen.get_height() // 2 - start_text.get_height() // 2 + name.get_height()))
+
+
 def draw_game(screen, imgs, block_size, player, level):
     screen.fill("black")
     draw_level(screen, block_size, level)
@@ -29,7 +37,7 @@ def draw_win(screen, font):
 def draw_frame(screen, imgs, block_size, player, level, font, gamestate):
     if gamestate == gamestates[0]:
         # Menu
-        pass
+        draw_menu(screen, font)
 
     if gamestate == gamestates[1]:
         # In Game

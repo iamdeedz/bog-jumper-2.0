@@ -2,6 +2,9 @@ from math import floor, ceil
 
 
 def check_collision(level, x, y):
+    if floor(x) < 0 or floor(y) < 0:
+        return True
+
     try:
         if level[floor(y)][floor(x)].is_solid:
             return True
