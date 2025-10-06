@@ -1,6 +1,7 @@
 from constants import screen_height, screen_width, fps, gamestates, block_size, imgs
 from visuals import draw_frame, load_level
 from player import Player
+from events import check_collision
 from random import randint
 import pygame as p
 
@@ -55,7 +56,7 @@ def main():
                         player.x_vel = -0.25
                     if event.key == p.K_RIGHT:
                         player.x_vel = 0.25
-                    if event.key == p.K_UP:
+                    if event.key == p.K_UP and check_collision(level, player.x, player.y+1):
                         player.y_vel = -0.25
 
         if gamestate == gamestates[2]:
